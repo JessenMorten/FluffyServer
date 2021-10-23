@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FluffyServer.Request
 {
@@ -15,7 +14,7 @@ namespace FluffyServer.Request
         {
             var raw = _encoding.GetString(buffer);
 
-            var lines = raw.Split("\r\n");
+            var lines = raw.Split(Environment.NewLine);
 
             var headers = lines
                 .Skip(1)

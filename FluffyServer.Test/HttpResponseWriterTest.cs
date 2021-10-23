@@ -1,4 +1,5 @@
 ﻿using FluffyServer.Response;
+using System;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -21,7 +22,7 @@ namespace FluffyServer.Test
 
             // Act
             var responseBytes = httpResponseWriter.Write(response);
-            var rawResponseLines = Encoding.UTF8.GetString(responseBytes).Split("\r\n");
+            var rawResponseLines = Encoding.UTF8.GetString(responseBytes).Split(Environment.NewLine);
 
             // Assert
             Assert.Equal("HTTP/1.1 204 No Content", rawResponseLines[0]);
@@ -45,7 +46,7 @@ namespace FluffyServer.Test
 
             // Act
             var responseBytes = httpResponseWriter.Write(response);
-            var rawResponseLines = Encoding.UTF8.GetString(responseBytes).Split("\r\n");
+            var rawResponseLines = Encoding.UTF8.GetString(responseBytes).Split(Environment.NewLine);
 
             // Assert
             Assert.Equal($"HTTP/1.1 {statusCode} {expectedDescription}", rawResponseLines.First());
